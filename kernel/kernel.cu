@@ -34,7 +34,7 @@ void cuda_move(std::vector<float3> &positions) {
 }
 
 void omp_move(std::vector<float3> &positions) {
-#pragma omp parallel for
+    #pragma omp parallel for
     for (int i = 0; i < positions.size(); i++) {
         move(positions[i]);
     }

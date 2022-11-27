@@ -1,4 +1,4 @@
-#include "kernel.h"
+#include "kernel/kernel.h"
 
 #include <cmath>
 #include <iostream>
@@ -8,12 +8,14 @@ int main(int argc, char *argv[]) {
     const unsigned int n_positions = std::atoi(argv[1]);
     const bool use_cuda = (argc == 3) && bool(std::atoi(argv[2]));
 
+    srand(0);
+
     std::vector<float3> positions(n_positions);
     for (unsigned int i = 0; i < n_positions; i++) {
         positions[i] = {
-            float(i % 1000),
-            float((i / 1000) % 1000),
-            float(i / 1000000)
+                1000.f * float(rand()) / RAND_MAX,
+                1000.f * float(rand()) / RAND_MAX,
+                1000.f * float(rand()) / RAND_MAX
         };
     }
 
